@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello, World! (Sort of)</title>
+    <script src="utils.js"></script>
+</head>
+
+<body>
+    <script>
+        var importObject = {
+            imports: {
+                log_func: function (arg) {
+                    console.log("You are this old: " + arg + " years.");
+                }
+            }
+        };
+
+        fetchAndInstantiate('ImportFunction.wasm', importObject).then(
+            function (instance) {
+                console.log(instance.exports.log_how_old(2022, 1991));
+            });
+
+        WebAssembly.compileStreaming(fetch('ImportFunction.wasm'))
+            .then(function (mod) {
+                var imports = WebAssembly.Module.imports(mod);
+                console.log(imports[0]);
+                var exports = WebAssembly.Module.exports(mod);
+                console.log(exports);
+            });
+    </script>
+</body>
+
+</html>
