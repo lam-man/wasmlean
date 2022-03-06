@@ -25,17 +25,17 @@ function fetchAndInstantiate(url, importObject) {
     );
 }
 
-fetchAndInstantiate('Memory.wasm').then(function (instance) {
-    var mem = instance.exports.memory;
+// fetchAndInstantiate('Memory.wasm').then(function (instance) {
+//     var mem = instance.exports.memory;
 
-    var button = document.getElementById("expand");
-    button.onclick = function () {
-        try {
-            mem.grow(1);
-            showDetails(mem);
-        } catch (re) {
-            alert("You cannot grow the memory any more!");
-        };
-    };
-    showDetails(mem);
-});
+//     var button = document.getElementById("expand");
+//     button.onclick = function () {
+//         try {
+//             mem.grow(1);
+//             showDetails(mem);
+//         } catch (re) {
+//             alert("You cannot grow the memory any more!");
+//         };
+//     };
+//     showDetails(mem);
+// });
